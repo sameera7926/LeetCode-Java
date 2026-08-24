@@ -9,12 +9,13 @@ class Solution {
 
             sum += nums[right];
 
-            if (right - left + 1 == k) {
-
-                maxSum = Math.max(maxSum, sum);
-
+            if (right - left + 1 > k) {
                 sum -= nums[left];
                 left++;
+            }
+
+            if (right - left + 1 == k) {
+                maxSum = Math.max(maxSum, sum);
             }
         }
 
