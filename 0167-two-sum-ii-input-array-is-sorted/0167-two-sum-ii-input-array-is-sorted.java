@@ -8,15 +8,17 @@ class Solution {
 
             int sum = numbers[left] + numbers[right];
 
-            if (sum == target) {
-                return new int[]{left + 1, right + 1};
-            } else if (sum < target) {
-                left++;
-            } else {
+            if (sum > target) {
                 right--;
+            }
+            else if (sum < target) {
+                left++;
+            }
+            else {
+                return new int[]{left + 1, right + 1};
             }
         }
 
-        return new int[]{-1, -1};
+        return new int[]{};
     }
 }
