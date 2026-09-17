@@ -1,102 +1,155 @@
-# Next Greater Node In Linked List
+# Squares of a Sorted Array
 
-**LeetCode 1019 — Next Greater Node In Linked List**
+**LeetCode 977 — Squares of a Sorted Array**
 
 ## 📌 Problem
 
-Given the head of a linked list, for each node find the value of the **next node whose value is greater** than the current node.
-
-If no greater node exists, return `0`.
+Given an integer array `nums` sorted in **non-decreasing order**, return an array containing the **squares of every number**, also sorted in non-decreasing order.
 
 ### Example
 
 ```text
 Input:
-[2, 1, 5]
+[-4, -1, 0, 3, 10]
 
 Output:
-[5, 5, 0]
+[0, 1, 9, 16, 100]
 ```
-
-Explanation:
-
-```text
-2 → 1 → 5
-↓   ↓   ↓
-5   5   0
-```
-
-* For `2`, the next greater value is `5`
-* For `1`, the next greater value is `5`
-* For `5`, there is no greater value → `0`
 
 ---
 
-## 💡 Approach
+## 💡 Key Idea
 
-We use a **Monotonic Stack**.
-
-The stack stores the **indices of nodes whose next greater element has not been found yet**.
-
-### Why a stack?
-
-When we find a new value, we check whether it is greater than the values represented by indices in the stack.
-
-If it is greater:
+If we simply square the numbers:
 
 ```text
-current value > stack's value
+[-4, -1, 0, 3, 10]
+ ↓   ↓  ↓  ↓   ↓
+[16,  1, 0, 9, 100]
 ```
 
-Then the current value is the **next greater node** for that index.
+The result is **not sorted**.
+
+The important observation is:
+
+> The largest square will come from either the **leftmost** or **rightmost** element.
+
+Why?
+
+Because the array is sorted, so the largest absolute value must be at one of the two ends.
+
+Therefore, use **Two Pointers**.
+
+```text
+left →                    ← right
+[-4, -1, 0, 3, 10]
+```
+
+Compare:
+
+```text
+abs(nums[left])
+vs
+abs(nums[right])
+```
+
+Put the larger square at the **end** of the result array.
 
 ---
 
-## 🔍 Example
+## 🔍 Dry Run
 
 ```text
-[2, 1, 5]
+nums = [-4, -1, 0, 3, 10]
+```
+
+Start:
+
+```text
+left = 0
+right = 4
+
+result = [_, _, _, _, _]
 ```
 
 ### Step 1
 
 ```text
-Current = 2
+(-4)² = 16
+(10)² = 100
 
-Stack = [0]
-Answer = [0, 0, 0]
+100 is larger
 ```
+
+Put `100` at the end:
+
+```text
+[_, _, _, _, 100]
+```
+
+Move `right`.
+
+---
 
 ### Step 2
 
 ```text
-Current = 1
+(-4)² = 16
+(3)² = 9
 
-1 > 2 ❌
-
-Stack = [0, 1]
+16 is larger
 ```
+
+```text
+[_, _, _, 16, 100]
+```
+
+Move `left`.
+
+---
 
 ### Step 3
 
 ```text
-Current = 5
+(-1)² = 1
+(3)² = 9
+
+9 is larger
 ```
 
-Check stack:
-
 ```text
-5 > 1 ✅
-answer[1] = 5
-
-5 > 2 ✅
-answer[0] = 5
+[_, _, 9, 16, 100]
 ```
 
-Nothing remains that needs an answer.
+Move `right`.
+
+---
+
+### Step 4
 
 ```text
-Answer = [5, 5, 0]
+(-1)² = 1
+(0)² = 0
+
+1 is larger
+```
+
+```text
+[_, 1, 9, 16, 100]
+```
+
+---
+
+### Step 5
+
+```text
+[0, 1, 9, 16, 100]
+```
+
+Final answer:
+
+```text
+[0, 1, 9, 16, 100]
 ```
 
 ---
@@ -105,91 +158,74 @@ Answer = [5, 5, 0]
 
 ```java
 class Solution {
-    public int[] nextLargerNodes(ListNode head) {
+    public int[] sortedSquares(int[] nums) {
 
-        ArrayList<Integer> values = new ArrayList<>();
+        int n = nums.length;
 
-        ListNode current = head;
+        int[] result = new int[n];
 
-        while (current != null) {
-            values.add(current.val);
-            current = current.next;
-        }
+        int left = 0;
+        int right = n - 1;
 
-        int[] answer = new int[values.size()];
+        for (int i = n - 1; i >= 0; i--) {
 
-        Stack<Integer> stack = new Stack<>();
+            int leftSquare = nums[left] * nums[left];
+            int rightSquare = nums[right] * nums[right];
 
-        for (int i = 0; i < values.size(); i++) {
-
-            while (!stack.isEmpty()
-                    && values.get(i) > values.get(stack.peek())) {
-
-                int index = stack.pop();
-                answer[index] = values.get(i);
+            if (leftSquare > rightSquare) {
+                result[i] = leftSquare;
+                left++;
+            } else {
+                result[i] = rightSquare;
+                right--;
             }
-
-            stack.push(i);
         }
 
-        return answer;
+        return result;
     }
 }
 ```
 
 ---
 
-## 🧠 Important Idea
+## 🧠 Why Fill From Right to Left?
 
-The stack contains **indices**, not values.
+We are finding the **largest square first**.
 
-For:
-
-```text
-[2, 1, 5]
-```
-
-The stack looks like:
+So place it at the last available position:
 
 ```text
-Before 5:
-
-Stack
- ↓
-[1]
-[0]
-```
-
-When `5` arrives:
-
-```text
-5 > value at index 1
-→ answer[1] = 5
-→ pop 1
-
-5 > value at index 0
-→ answer[0] = 5
-→ pop 0
+i = n - 1
 ```
 
 Then:
 
 ```text
-answer = [5, 5, 0]
+largest → end
+second largest → before it
+third largest → before it
+...
 ```
+
+This automatically gives sorted order.
 
 ---
 
 ## 🎯 Pattern
 
-**Linked List → Convert to ArrayList → Monotonic Stack → Next Greater Element**
+**Sorted Array → Two Pointers → Compare Both Ends**
 
-This is the same core pattern used in problems like:
+### Remember:
 
-* Next Greater Element I
-* Next Greater Element II
-* Daily Temperatures
-* Stock Span
+```text
+left square  vs  right square
+       ↓
+   larger one
+       ↓
+put it at result[i]
+       ↓
+move that pointer
+```
 
 ---
 
@@ -200,14 +236,14 @@ Time Complexity:  O(n)
 Space Complexity: O(n)
 ```
 
-Each index is pushed into the stack once and popped at most once.
+`O(n)` extra space is required for the result array.
 
 ---
 
 ## 🔑 What I Learned
 
-* How to process a linked list sequentially
-* Why storing indices is useful
-* How a monotonic stack works
-* How to find the next greater element efficiently
-* Why the brute-force approach can be improved from `O(n²)` to `O(n)`
+* How to use two pointers on a sorted array
+* Why squaring can destroy sorted order
+* Why the largest square is always at one of the two ends
+* Why the result is filled from right to left
+* How to solve the problem in `O(n)` time
