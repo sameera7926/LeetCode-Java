@@ -1,46 +1,293 @@
-<h2><a href="https://leetcode.com/problems/fruit-into-baskets">940. Fruit Into Baskets</a></h2><h3>Medium</h3><hr><p>You are visiting a farm that has a single row of fruit trees arranged from left to right. The trees are represented by an integer array <code>fruits</code> where <code>fruits[i]</code> is the <strong>type</strong> of fruit the <code>i<sup>th</sup></code> tree produces.</p>
+# Fruit Into Baskets
 
-<p>You want to collect as much fruit as possible. However, the owner has some strict rules that you must follow:</p>
+**LeetCode 904 — Fruit Into Baskets**
 
-<ul>
-	<li>You only have <strong>two</strong> baskets, and each basket can only hold a <strong>single type</strong> of fruit. There is no limit on the amount of fruit each basket can hold.</li>
-	<li>Starting from any tree of your choice, you must pick <strong>exactly one fruit</strong> from <strong>every</strong> tree (including the start tree) while moving to the right. The picked fruits must fit in one of your baskets.</li>
-	<li>Once you reach a tree with fruit that cannot fit in your baskets, you must stop.</li>
-</ul>
+## 📌 Problem
 
-<p>Given the integer array <code>fruits</code>, return <em>the <strong>maximum</strong> number of fruits you can pick</em>.</p>
+You are given an integer array `fruits`.
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+Each number represents a type of fruit.
 
-<pre>
-<strong>Input:</strong> fruits = [<u>1,2,1</u>]
-<strong>Output:</strong> 3
-<strong>Explanation:</strong> We can pick from all 3 trees.
-</pre>
+You have **2 baskets**, and each basket can hold only **one type of fruit**.
 
-<p><strong class="example">Example 2:</strong></p>
+You must pick fruits from a **continuous subarray**.
 
-<pre>
-<strong>Input:</strong> fruits = [0,<u>1,2,2</u>]
-<strong>Output:</strong> 3
-<strong>Explanation:</strong> We can pick from trees [1,2,2].
-If we had started at the first tree, we would only pick from trees [0,1].
-</pre>
+Find the maximum number of fruits you can collect.
 
-<p><strong class="example">Example 3:</strong></p>
+### Example
 
-<pre>
-<strong>Input:</strong> fruits = [1,<u>2,3,2,2</u>]
-<strong>Output:</strong> 4
-<strong>Explanation:</strong> We can pick from trees [2,3,2,2].
-If we had started at the first tree, we would only pick from trees [1,2].
-</pre>
+```text
+Input:
+[1, 2, 1]
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+Output:
+3
+```
 
-<ul>
-	<li><code>1 &lt;= fruits.length &lt;= 10<sup>5</sup></code></li>
-	<li><code>0 &lt;= fruits[i] &lt; fruits.length</code></li>
-</ul>
+We can collect:
+
+```text
+[1, 2, 1]
+
+Basket 1 → type 1
+Basket 2 → type 2
+
+Total = 3
+```
+
+---
+
+## 💡 Key Idea
+
+This is a **Sliding Window** problem.
+
+The window can contain **at most 2 different fruit types**.
+
+```text
+[1, 2, 1]
+ ↑     ↑
+left  right
+```
+
+If the window contains more than 2 types:
+
+```text
+[1, 2, 3]
+```
+
+We move `left` until the window becomes valid again.
+
+### Condition
+
+```text
+number of distinct fruit types <= 2
+```
+
+---
+
+## 🔍 Dry Run
+
+```text
+fruits = [1, 2, 3, 2, 2]
+```
+
+### Step 1
+
+```text
+[1]
+
+Types = {1}
+Length = 1
+```
+
+### Step 2
+
+```text
+[1, 2]
+
+Types = {1, 2}
+Length = 2
+```
+
+Still valid.
+
+### Step 3
+
+```text
+[1, 2, 3]
+
+Types = {1, 2, 3}
+```
+
+❌ 3 different types.
+
+Move `left`:
+
+```text
+[2, 3]
+
+Types = {2, 3}
+```
+
+Valid again.
+
+### Step 4
+
+```text
+[2, 3, 2]
+
+Types = {2, 3}
+Length = 3
+```
+
+### Step 5
+
+```text
+[2, 3, 2, 2]
+
+Types = {2, 3}
+Length = 4
+```
+
+Final answer:
+
+```text
+4
+```
+
+---
+
+## 💻 Java Solution
+
+```java
+class Solution {
+    public int totalFruit(int[] fruits) {
+
+        int left = 0;
+        int maxLength = 0;
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int right = 0; right < fruits.length; right++) {
+
+            int fruit = fruits[right];
+
+            map.put(fruit, map.getOrDefault(fruit, 0) + 1);
+
+            while (map.size() > 2) {
+
+                int leftFruit = fruits[left];
+
+                map.put(
+                    leftFruit,
+                    map.get(leftFruit) - 1
+                );
+
+                if (map.get(leftFruit) == 0) {
+                    map.remove(leftFruit);
+                }
+
+                left++;
+            }
+
+            maxLength = Math.max(
+                maxLength,
+                right - left + 1
+            );
+        }
+
+        return maxLength;
+    }
+}
+```
+
+---
+
+## 🧠 Why Do We Need a HashMap?
+
+The window needs to know:
+
+> **How many fruits of each type are currently inside it?**
+
+For:
+
+```text
+[1, 2, 2]
+```
+
+The map contains:
+
+```text
+1 → 1
+2 → 2
+```
+
+When `left` moves past the `1`:
+
+```text
+1 → 0
+```
+
+We remove it:
+
+```java
+map.remove(leftFruit);
+```
+
+Now only one fruit type remains.
+
+---
+
+## ⭐ Important Line
+
+```java
+right - left + 1
+```
+
+This gives the current window size.
+
+Example:
+
+```text
+left = 2
+right = 5
+
+5 - 2 + 1 = 4
+```
+
+So the window contains **4 fruits**.
+
+---
+
+## 🎯 Pattern
+
+**Sliding Window + HashMap + At Most K Distinct Elements**
+
+Here:
+
+```text
+K = 2
+```
+
+Think:
+
+```text
+right →
+[ 1  2  1  3 ]
+  ↑        ↑
+ left     right
+
+Types = 3 ❌
+
+Move left →
+[ 2  1  3 ]
+
+Still 3 ❌
+
+Move left →
+[ 1  3 ]
+
+Types = 2 ✅
+```
+
+---
+
+## ⏱️ Complexity
+
+```text
+Time Complexity:  O(n)
+Space Complexity: O(1)
+```
+
+There can be at most **2 fruit types** in the valid window, so the HashMap contains at most 2 keys.
+
+---
+
+## 🔑 What I Learned
+
+* How to identify a Sliding Window problem
+* How to maintain a window with **at most 2 distinct elements**
+* How to use a HashMap to track frequencies
+* Why `left` moves when the window becomes invalid
+* How to calculate the current window length
+* How to solve the problem in `O(n)` time
