@@ -1,35 +1,154 @@
-<h2><a href="https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion">1288. Maximum Subarray Sum with One Deletion</a></h2><h3>Medium</h3><hr><p>Given an array of integers, return the maximum sum for a <strong>non-empty</strong>&nbsp;subarray (contiguous elements) with at most one element deletion.&nbsp;In other words, you want to choose a subarray and optionally delete one element from it so that there is still at least one element left and the&nbsp;sum of the remaining elements is maximum possible.</p>
+# Maximum Subarray Sum with One Deletion
 
-<p>Note that the subarray needs to be <strong>non-empty</strong> after deleting one element.</p>
+**LeetCode 1186 — Maximum Subarray Sum with One Deletion**
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+## 📌 Problem
 
-<pre>
-<strong>Input:</strong> arr = [1,-2,0,3]
-<strong>Output:</strong> 4
-<strong>Explanation: </strong>Because we can choose [1, -2, 0, 3] and drop -2, thus the subarray [1, 0, 3] becomes the maximum value.</pre>
+Given an integer array `arr`, find the maximum sum of a **non-empty subarray** after deleting **at most one element**.
 
-<p><strong class="example">Example 2:</strong></p>
+### Example
 
-<pre>
-<strong>Input:</strong> arr = [1,-2,-2,3]
-<strong>Output:</strong> 3
-<strong>Explanation: </strong>We just choose [3] and it&#39;s the maximum sum.
-</pre>
+```text
+Input:
+[1, -2, 0, 3]
 
-<p><strong class="example">Example 3:</strong></p>
+Delete -2:
 
-<pre>
-<strong>Input:</strong> arr = [-1,-1,-1,-1]
-<strong>Output:</strong> -1
-<strong>Explanation:</strong>&nbsp;The final subarray needs to be non-empty. You can&#39;t choose [-1] and delete -1 from it, then get an empty subarray to make the sum equals to 0.
-</pre>
+[1, 0, 3]
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+Maximum Sum = 4
+```
 
-<ul>
-	<li><code>1 &lt;= arr.length &lt;= 10<sup>5</sup></code></li>
-	<li><code>-10<sup>4</sup> &lt;= arr[i] &lt;= 10<sup>4</sup></code></li>
-</ul>
+## 💡 Approach
+
+This problem is an extension of **Kadane's Algorithm**.
+
+We maintain two values:
+
+* `noDelete` → maximum subarray sum ending at the current index **without deleting any element**
+* `oneDelete` → maximum subarray sum ending at the current index **after deleting exactly one element**
+
+### 1. Without deletion
+
+For the current element `x`:
+
+```java
+newNoDelete = Math.max(x, noDelete + x);
+```
+
+We either:
+
+* Start a new subarray from `x`
+* Extend the previous subarray
+
+### 2. With one deletion
+
+```java
+newOneDelete = Math.max(oneDelete + x, noDelete);
+```
+
+There are two possibilities:
+
+* `oneDelete + x` → the deletion was already used earlier
+* `noDelete` → delete the current element `x`
+
+## 🔍 Dry Run
+
+For:
+
+```text
+arr = [1, -2, 0, 3]
+```
+
+| Element | noDelete | oneDelete | Result |
+| ------: | -------: | --------: | -----: |
+|       1 |        1 |         — |      1 |
+|      -2 |       -1 |         1 |      1 |
+|       0 |        0 |         1 |      1 |
+|       3 |        3 |         4 |  **4** |
+
+At `-2`, we can delete it:
+
+```text
+[1, -2, 0, 3]
+    ↓
+[1, 0, 3]
+
+Sum = 4
+```
+
+## 💻 Java Solution
+
+```java
+class Solution {
+    public int maximumSum(int[] arr) {
+
+        int noDelete = arr[0];
+        int oneDelete = Integer.MIN_VALUE;
+        int result = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+
+            int x = arr[i];
+
+            int newNoDelete =
+                Math.max(x, noDelete + x);
+
+            int newOneDelete =
+                Math.max(oneDelete + x, noDelete);
+
+            noDelete = newNoDelete;
+            oneDelete = newOneDelete;
+
+            result = Math.max(
+                result,
+                Math.max(noDelete, oneDelete)
+            );
+        }
+
+        return result;
+    }
+}
+```
+
+## 🧠 Key Insight
+
+Normal Kadane's Algorithm tracks only:
+
+```text
+maximum sum without deletion
+```
+
+Here we track:
+
+```text
+noDelete
+    ↓
+No element deleted
+
+oneDelete
+    ↓
+One element deleted
+```
+
+So the problem becomes:
+
+> **Kadane's Algorithm + one extra state**
+
+## ⏱️ Complexity
+
+```text
+Time Complexity:  O(n)
+Space Complexity: O(1)
+```
+
+## 🎯 Pattern
+
+**Kadane's Algorithm → Modified Kadane → State Tracking → One Deletion**
+
+## 🔑 What I Learned
+
+* How Kadane's Algorithm can be extended
+* Why two states are required
+* How to handle deletion of the current element
+* How to maintain `O(n)` time and `O(1)` space
