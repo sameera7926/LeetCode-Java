@@ -1,39 +1,276 @@
-<h2><a href="https://leetcode.com/problems/maximum-sum-circular-subarray">954. Maximum Sum Circular Subarray</a></h2><h3>Medium</h3><hr><p>Given a <strong>circular integer array</strong> <code>nums</code> of length <code>n</code>, return <em>the maximum possible sum of a non-empty <strong>subarray</strong> of </em><code>nums</code>.</p>
+# Maximum Sum Circular Subarray
 
-<p>A <strong>circular array</strong> means the end of the array connects to the beginning of the array. Formally, the next element of <code>nums[i]</code> is <code>nums[(i + 1) % n]</code> and the previous element of <code>nums[i]</code> is <code>nums[(i - 1 + n) % n]</code>.</p>
+**LeetCode 918 — Maximum Sum Circular Subarray**
 
-<p>A <strong>subarray</strong> may only include each element of the fixed buffer <code>nums</code> at most once. Formally, for a subarray <code>nums[i], nums[i + 1], ..., nums[j]</code>, there does not exist <code>i &lt;= k1</code>, <code>k2 &lt;= j</code> with <code>k1 % n == k2 % n</code>.</p>
+## 📌 Problem
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+Given a **circular integer array**, find the maximum possible sum of a **non-empty subarray**.
 
-<pre>
-<strong>Input:</strong> nums = [1,-2,3,-2]
-<strong>Output:</strong> 3
-<strong>Explanation:</strong> Subarray [3] has maximum sum 3.
-</pre>
+In a circular array, the last element can connect back to the first element.
 
-<p><strong class="example">Example 2:</strong></p>
+### Example
 
-<pre>
-<strong>Input:</strong> nums = [5,-3,5]
-<strong>Output:</strong> 10
-<strong>Explanation:</strong> Subarray [5,5] has maximum sum 5 + 5 = 10.
-</pre>
+```text
+Input:
+[5, -3, 5]
 
-<p><strong class="example">Example 3:</strong></p>
+Circular array:
 
-<pre>
-<strong>Input:</strong> nums = [-3,-2,-3]
-<strong>Output:</strong> -2
-<strong>Explanation:</strong> Subarray [-2] has maximum sum -2.
-</pre>
+5 → -3 → 5
+↑         ↓
+└─────────┘
+```
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+The maximum circular subarray is:
 
-<ul>
-	<li><code>n == nums.length</code></li>
-	<li><code>1 &lt;= n &lt;= 3 * 10<sup>4</sup></code></li>
-	<li><code>-3 * 10<sup>4</sup> &lt;= nums[i] &lt;= 3 * 10<sup>4</sup></code></li>
-</ul>
+```text
+[5, 5]
+
+Sum = 10
+```
+
+**Output: `10`**
+
+---
+
+## 💡 Key Idea
+
+There are **two possible cases** for the maximum subarray.
+
+### Case 1: Normal subarray
+
+The maximum subarray does **not wrap around**.
+
+Use normal **Kadane's Algorithm**:
+
+```text
+[5, -3, 5]
+
+Maximum normal subarray = [5, -3, 5]
+Sum = 7
+```
+
+---
+
+### Case 2: Circular / Wrapping subarray
+
+The maximum subarray **wraps from the end to the beginning**.
+
+Instead of directly finding the wrapping subarray:
+
+```text
+Total Sum - Minimum Subarray Sum
+```
+
+Example:
+
+```text
+[5, -3, 5]
+
+Total = 7
+Minimum subarray = [-3]
+
+7 - (-3) = 10
+```
+
+So:
+
+```text
+Maximum circular sum = max(maxSum, totalSum - minSum)
+```
+
+---
+
+## ⚠️ Important Edge Case
+
+If **all elements are negative**, we cannot use:
+
+```text
+totalSum - minSum
+```
+
+because it would represent an empty subarray.
+
+Example:
+
+```text
+[-3, -2, -5]
+```
+
+The answer is:
+
+```text
+-2
+```
+
+So if:
+
+```java
+maxSum < 0
+```
+
+return `maxSum`.
+
+---
+
+## 🔍 Dry Run
+
+```text
+arr = [5, -3, 5]
+```
+
+### Normal Kadane
+
+```text
+5 → 5
+-3 → 2
+5 → 7
+```
+
+```text
+maxSum = 7
+```
+
+### Minimum Kadane
+
+```text
+5 → 5
+-3 → -3
+5 → 2
+```
+
+```text
+minSum = -3
+```
+
+### Total
+
+```text
+totalSum = 5 + (-3) + 5
+         = 7
+```
+
+### Circular sum
+
+```text
+totalSum - minSum
+
+7 - (-3)
+= 10
+```
+
+### Final
+
+```text
+max(7, 10) = 10
+```
+
+---
+
+## 💻 Java Solution
+
+```java
+class Solution {
+    public int maxSubarraySumCircular(int[] nums) {
+
+        int totalSum = 0;
+
+        int currentMax = 0;
+        int maxSum = nums[0];
+
+        int currentMin = 0;
+        int minSum = nums[0];
+
+        for (int num : nums) {
+
+            totalSum += num;
+
+            currentMax = Math.max(
+                num,
+                currentMax + num
+            );
+
+            maxSum = Math.max(
+                maxSum,
+                currentMax
+            );
+
+            currentMin = Math.min(
+                num,
+                currentMin + num
+            );
+
+            minSum = Math.min(
+                minSum,
+                currentMin
+            );
+        }
+
+        // All elements are negative
+        if (maxSum < 0) {
+            return maxSum;
+        }
+
+        int circularSum = totalSum - minSum;
+
+        return Math.max(maxSum, circularSum);
+    }
+}
+```
+
+---
+
+## 🧠 Remember This
+
+```text
+Maximum Circular Subarray
+        ↓
+   Two possibilities
+      ↙       ↘
+ Normal      Circular
+  Kadane      ↓
+             Total - Minimum
+```
+
+So the formula is:
+
+```text
+answer = max(
+    maximum normal subarray,
+    total sum - minimum subarray
+)
+```
+
+Except when **all numbers are negative**.
+
+---
+
+## 🎯 Pattern
+
+**Kadane's Algorithm → Maximum + Minimum Kadane → Circular Array**
+
+### Key Formula
+
+```text
+Circular Maximum = Total Sum - Minimum Subarray Sum
+```
+
+---
+
+## ⏱️ Complexity
+
+```text
+Time Complexity:  O(n)
+Space Complexity: O(1)
+```
+
+---
+
+## 🔑 What I Learned
+
+* How Kadane's Algorithm works on a circular array
+* How to handle wrapping subarrays
+* Why `totalSum - minSum` gives the circular maximum
+* Why minimum Kadane is required
+* How to handle the all-negative edge case
+* How to solve the problem in `O(n)` time and `O(1)` space
