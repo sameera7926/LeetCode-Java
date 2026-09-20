@@ -86,6 +86,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0345-reverse-vowels-of-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/0345-reverse-vowels-of-a-string) |
 | [0424-longest-repeating-character-replacement](https://github.com/sameera7926/LeetCode-Java/tree/master/0424-longest-repeating-character-replacement) |
 | [0438-find-all-anagrams-in-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/0438-find-all-anagrams-in-a-string) |
+| [3498-reverse-degree-of-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/3498-reverse-degree-of-a-string) |
 ## Linked List
 |  |
 | ------- |
@@ -131,4 +132,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0918-maximum-sum-circular-subarray](https://github.com/sameera7926/LeetCode-Java/tree/master/0918-maximum-sum-circular-subarray) |
+## Simulation
+|  |
+| ------- |
+| [3498-reverse-degree-of-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/3498-reverse-degree-of-a-string) |
 <!---LeetCode Topics End-->
