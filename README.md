@@ -136,4 +136,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [3498-reverse-degree-of-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/3498-reverse-degree-of-a-string) |
+## Math
+|  |
+| ------- |
+| [0009-palindrome-number](https://github.com/sameera7926/LeetCode-Java/tree/master/0009-palindrome-number) |
 <!---LeetCode Topics End-->
