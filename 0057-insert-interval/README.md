@@ -1,37 +1,382 @@
-<h2><a href="https://leetcode.com/problems/insert-interval">57. Insert Interval</a></h2><h3>Medium</h3><hr><p>You are given an array of non-overlapping intervals <code>intervals</code> where <code>intervals[i] = [start<sub>i</sub>, end<sub>i</sub>]</code> represent the start and the end of the <code>i<sup>th</sup></code> interval and <code>intervals</code> is sorted in ascending order by <code>start<sub>i</sub></code>. You are also given an interval <code>newInterval = [start, end]</code> that represents the start and end of another interval.</p>
+# LeetCode 57 — Insert Interval
 
-<p>Two intervals are considered overlapping if they share <strong>at least</strong> one point.</p>
+## 🧩 Problem
 
-<p>Insert <code>newInterval</code> into <code>intervals</code> such that <code>intervals</code> is still sorted in ascending order by <code>start<sub>i</sub></code> and <code>intervals</code> still does not have any overlapping intervals (merge overlapping intervals if necessary).</p>
+You are given:
 
-<p>Return <code>intervals</code><em> after the insertion</em>.</p>
+```java
+int[][] intervals
+```
 
-<p><strong>Note</strong> that you don&#39;t need to modify <code>intervals</code> in-place. You can make a new array and return it.</p>
+where the intervals are:
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+* sorted by their starting value
+* non-overlapping
 
-<pre>
-<strong>Input:</strong> intervals = [[1,3],[6,9]], newInterval = [2,5]
-<strong>Output:</strong> [[1,5],[6,9]]
-</pre>
+You are also given:
 
-<p><strong class="example">Example 2:</strong></p>
+```java
+int[] newInterval
+```
 
-<pre>
-<strong>Input:</strong> intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
-<strong>Output:</strong> [[1,2],[3,10],[12,16]]
-<strong>Explanation:</strong> Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
-</pre>
+Insert `newInterval` into the intervals while keeping the result:
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+* sorted
+* non-overlapping
 
-<ul>
-	<li><code>0 &lt;= intervals.length &lt;= 10<sup>4</sup></code></li>
-	<li><code>intervals[i].length == 2</code></li>
-	<li><code>0 &lt;= start<sub>i</sub> &lt;= end<sub>i</sub> &lt;= 10<sup>5</sup></code></li>
-	<li><code>intervals</code> is sorted by <code>start<sub>i</sub></code> in <strong>ascending</strong> order.</li>
-	<li><code>newInterval.length == 2</code></li>
-	<li><code>0 &lt;= start &lt;= end &lt;= 10<sup>5</sup></code></li>
-</ul>
+If `newInterval` overlaps with existing intervals, merge them.
+
+---
+
+# 🧠 Pattern
+
+**Intervals + Two Pointer/Index + Merging**
+
+Unlike LeetCode 56, the intervals are **already sorted**, so we do **not** need `Arrays.sort()`.
+
+The main idea is to divide the intervals into 3 parts:
+
+```text
+BEFORE newInterval
+        ↓
+OVERLAPPING intervals
+        ↓
+AFTER newInterval
+```
+
+---
+
+# 🔑 Three Main Cases
+
+## 1. Interval is BEFORE `newInterval`
+
+Condition:
+
+```java
+intervals[i][1] < newInterval[0]
+```
+
+Meaning:
+
+> Current interval ends before `newInterval` starts.
+
+There is no overlap.
+
+So:
+
+```java
+res.add(intervals[i]);
+```
+
+Then move forward:
+
+```java
+i++;
+```
+
+---
+
+## 2. Interval OVERLAPS `newInterval`
+
+Condition:
+
+```java
+intervals[i][0] <= newInterval[1]
+```
+
+Meaning:
+
+> Current interval starts before or exactly when `newInterval` ends.
+
+So we merge.
+
+### Update start
+
+```java
+newInterval[0] =
+    Math.min(newInterval[0], intervals[i][0]);
+```
+
+Take the smaller starting value.
+
+### Update end
+
+```java
+newInterval[1] =
+    Math.max(newInterval[1], intervals[i][1]);
+```
+
+Take the larger ending value.
+
+Then:
+
+```java
+i++;
+```
+
+Move to the next interval.
+
+---
+
+## 3. Interval is AFTER `newInterval`
+
+After all overlapping intervals are merged:
+
+```java
+res.add(newInterval);
+```
+
+Then add all remaining intervals directly:
+
+```java
+while (i < intervals.length) {
+    res.add(intervals[i]);
+    i++;
+}
+```
+
+---
+
+# 💻 Java Code
+
+```java
+class Solution {
+    public int[][] insert(int[][] intervals, int[] newInterval) {
+
+        List<int[]> res = new ArrayList<>();
+
+        int i = 0;
+
+        // 1. Add intervals before newInterval
+        while (i < intervals.length &&
+               intervals[i][1] < newInterval[0]) {
+
+            res.add(intervals[i]);
+            i++;
+        }
+
+        // 2. Merge overlapping intervals
+        while (i < intervals.length &&
+               intervals[i][0] <= newInterval[1]) {
+
+            newInterval[0] =
+                Math.min(newInterval[0], intervals[i][0]);
+
+            newInterval[1] =
+                Math.max(newInterval[1], intervals[i][1]);
+
+            i++;
+        }
+
+        // 3. Add merged newInterval
+        res.add(newInterval);
+
+        // 4. Add remaining intervals
+        while (i < intervals.length) {
+
+            res.add(intervals[i]);
+            i++;
+        }
+
+        return res.toArray(new int[res.size()][]);
+    }
+}
+```
+
+---
+
+# 🧠 Code Explanation
+
+### Result list
+
+```java
+List<int[]> res = new ArrayList<>();
+```
+
+Stores the final intervals.
+
+---
+
+### Index
+
+```java
+int i = 0;
+```
+
+Keeps track of the current interval being processed.
+
+---
+
+### First `while`
+
+```java
+while (i < intervals.length &&
+       intervals[i][1] < newInterval[0])
+```
+
+Finds intervals that are completely **before** `newInterval`.
+
+They don't overlap, so add them directly.
+
+---
+
+### Second `while`
+
+```java
+while (i < intervals.length &&
+       intervals[i][0] <= newInterval[1])
+```
+
+Finds intervals that **overlap** with `newInterval`.
+
+Merge them by updating:
+
+```java
+newInterval[0] = Math.min(...);
+```
+
+and:
+
+```java
+newInterval[1] = Math.max(...);
+```
+
+---
+
+### Add merged interval
+
+```java
+res.add(newInterval);
+```
+
+After merging all overlapping intervals, add the final merged interval.
+
+---
+
+### Third `while`
+
+```java
+while (i < intervals.length)
+```
+
+Adds all intervals that come after `newInterval`.
+
+---
+
+### Return
+
+```java
+return res.toArray(new int[res.size()][]);
+```
+
+Converts:
+
+```text
+List<int[]>
+```
+
+into:
+
+```text
+int[][]
+```
+
+because the method must return a 2D array.
+
+---
+
+# 🧠 Revision Formula
+
+Remember:
+
+```text
+              INSERT INTERVAL
+                    ↓
+        ┌───────────┴───────────┐
+        ↓                       ↓
+     BEFORE                  OVERLAP
+        ↓                       ↓
+       ADD                    MERGE
+                                ↓
+                         update start/end
+                                ↓
+                         ADD newInterval
+                                ↓
+                         ADD remaining
+```
+
+### ⭐ Most Important Conditions
+
+**Before:**
+
+```java
+intervals[i][1] < newInterval[0]
+```
+
+➡️ Add directly.
+
+**Overlap:**
+
+```java
+intervals[i][0] <= newInterval[1]
+```
+
+➡️ Merge.
+
+**Merge start:**
+
+```java
+newInterval[0] =
+    Math.min(newInterval[0], intervals[i][0]);
+```
+
+**Merge end:**
+
+```java
+newInterval[1] =
+    Math.max(newInterval[1], intervals[i][1]);
+```
+
+---
+
+# ⚠️ Important Difference: 56 vs 57
+
+| LeetCode 56               | LeetCode 57                          |
+| ------------------------- | ------------------------------------ |
+| Merge existing intervals  | Insert a new interval                |
+| Input may not be sorted   | Input is already sorted              |
+| Need `Arrays.sort()`      | No sorting needed                    |
+| Compare current intervals | Compare intervals with `newInterval` |
+| Merge overlaps            | Insert + merge overlaps              |
+
+---
+
+# 🎯 Interview Explanation
+
+> The intervals are already sorted, so I use one index to process them in order. First, I add all intervals that end before the new interval starts. Then I merge all intervals that overlap with the new interval by taking the minimum start and maximum end. After that, I add the merged new interval and finally add all remaining intervals.
+
+---
+
+# ⏱️ Complexity
+
+### Time
+
+```text
+O(n)
+```
+
+Each interval is processed once.
+
+### Space
+
+```text
+O(n)
+```
+
+For the result list.
+
+---
+
+# 🔥 One-Line Memory Trick
+
+**Before → Add | Overlap → Merge | After → Add**
