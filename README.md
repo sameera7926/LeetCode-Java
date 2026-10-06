@@ -42,6 +42,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0202-happy-number](https://github.com/sameera7926/LeetCode-Java/tree/master/0202-happy-number) |
 | [0344-reverse-string](https://github.com/sameera7926/LeetCode-Java/tree/master/0344-reverse-string) |
 | [0345-reverse-vowels-of-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/0345-reverse-vowels-of-a-string) |
+| [0844-backspace-string-compare](https://github.com/sameera7926/LeetCode-Java/tree/master/0844-backspace-string-compare) |
 | [0876-middle-of-the-linked-list](https://github.com/sameera7926/LeetCode-Java/tree/master/0876-middle-of-the-linked-list) |
 | [0977-squares-of-a-sorted-array](https://github.com/sameera7926/LeetCode-Java/tree/master/0977-squares-of-a-sorted-array) |
 ## Binary Search
@@ -92,6 +93,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0345-reverse-vowels-of-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/0345-reverse-vowels-of-a-string) |
 | [0424-longest-repeating-character-replacement](https://github.com/sameera7926/LeetCode-Java/tree/master/0424-longest-repeating-character-replacement) |
 | [0438-find-all-anagrams-in-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/0438-find-all-anagrams-in-a-string) |
+| [0844-backspace-string-compare](https://github.com/sameera7926/LeetCode-Java/tree/master/0844-backspace-string-compare) |
 | [3498-reverse-degree-of-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/3498-reverse-degree-of-a-string) |
 ## Linked List
 |  |
@@ -119,6 +121,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0042-trapping-rain-water](https://github.com/sameera7926/LeetCode-Java/tree/master/0042-trapping-rain-water) |
 | [0503-next-greater-element-ii](https://github.com/sameera7926/LeetCode-Java/tree/master/0503-next-greater-element-ii) |
+| [0844-backspace-string-compare](https://github.com/sameera7926/LeetCode-Java/tree/master/0844-backspace-string-compare) |
 ## Monotonic Stack
 |  |
 | ------- |
@@ -144,6 +147,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Simulation
 |  |
 | ------- |
+| [0844-backspace-string-compare](https://github.com/sameera7926/LeetCode-Java/tree/master/0844-backspace-string-compare) |
 | [3498-reverse-degree-of-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/3498-reverse-degree-of-a-string) |
 ## Math
 |  |
