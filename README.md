@@ -88,6 +88,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0003-longest-substring-without-repeating-characters](https://github.com/sameera7926/LeetCode-Java/tree/master/0003-longest-substring-without-repeating-characters) |
+| [0020-valid-parentheses](https://github.com/sameera7926/LeetCode-Java/tree/master/0020-valid-parentheses) |
 | [0125-valid-palindrome](https://github.com/sameera7926/LeetCode-Java/tree/master/0125-valid-palindrome) |
 | [0344-reverse-string](https://github.com/sameera7926/LeetCode-Java/tree/master/0344-reverse-string) |
 | [0345-reverse-vowels-of-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/0345-reverse-vowels-of-a-string) |
@@ -119,6 +120,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Stack
 |  |
 | ------- |
+| [0020-valid-parentheses](https://github.com/sameera7926/LeetCode-Java/tree/master/0020-valid-parentheses) |
 | [0042-trapping-rain-water](https://github.com/sameera7926/LeetCode-Java/tree/master/0042-trapping-rain-water) |
 | [0503-next-greater-element-ii](https://github.com/sameera7926/LeetCode-Java/tree/master/0503-next-greater-element-ii) |
 | [0844-backspace-string-compare](https://github.com/sameera7926/LeetCode-Java/tree/master/0844-backspace-string-compare) |
@@ -158,4 +160,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0056-merge-intervals](https://github.com/sameera7926/LeetCode-Java/tree/master/0056-merge-intervals) |
+## Bracket Sequences
+|  |
+| ------- |
+| [0020-valid-parentheses](https://github.com/sameera7926/LeetCode-Java/tree/master/0020-valid-parentheses) |
 <!---LeetCode Topics End-->
