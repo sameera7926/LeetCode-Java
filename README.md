@@ -23,6 +23,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0560-subarray-sum-equals-k](https://github.com/sameera7926/LeetCode-Java/tree/master/0560-subarray-sum-equals-k) |
 | [0643-maximum-average-subarray-i](https://github.com/sameera7926/LeetCode-Java/tree/master/0643-maximum-average-subarray-i) |
 | [0724-find-pivot-index](https://github.com/sameera7926/LeetCode-Java/tree/master/0724-find-pivot-index) |
+| [0739-daily-temperatures](https://github.com/sameera7926/LeetCode-Java/tree/master/0739-daily-temperatures) |
 | [0904-fruit-into-baskets](https://github.com/sameera7926/LeetCode-Java/tree/master/0904-fruit-into-baskets) |
 | [0918-maximum-sum-circular-subarray](https://github.com/sameera7926/LeetCode-Java/tree/master/0918-maximum-sum-circular-subarray) |
 | [0977-squares-of-a-sorted-array](https://github.com/sameera7926/LeetCode-Java/tree/master/0977-squares-of-a-sorted-array) |
@@ -126,6 +127,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0042-trapping-rain-water](https://github.com/sameera7926/LeetCode-Java/tree/master/0042-trapping-rain-water) |
 | [0496-next-greater-element-i](https://github.com/sameera7926/LeetCode-Java/tree/master/0496-next-greater-element-i) |
 | [0503-next-greater-element-ii](https://github.com/sameera7926/LeetCode-Java/tree/master/0503-next-greater-element-ii) |
+| [0739-daily-temperatures](https://github.com/sameera7926/LeetCode-Java/tree/master/0739-daily-temperatures) |
 | [0844-backspace-string-compare](https://github.com/sameera7926/LeetCode-Java/tree/master/0844-backspace-string-compare) |
 ## Monotonic Stack
 |  |
@@ -133,6 +135,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0042-trapping-rain-water](https://github.com/sameera7926/LeetCode-Java/tree/master/0042-trapping-rain-water) |
 | [0496-next-greater-element-i](https://github.com/sameera7926/LeetCode-Java/tree/master/0496-next-greater-element-i) |
 | [0503-next-greater-element-ii](https://github.com/sameera7926/LeetCode-Java/tree/master/0503-next-greater-element-ii) |
+| [0739-daily-temperatures](https://github.com/sameera7926/LeetCode-Java/tree/master/0739-daily-temperatures) |
 ## Greedy
 |  |
 | ------- |
