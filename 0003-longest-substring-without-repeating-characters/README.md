@@ -18,7 +18,7 @@ s = "pwwkew"
 ```
 
 Valid substring:
-
+...
 ```text
 "wke"
 ```
