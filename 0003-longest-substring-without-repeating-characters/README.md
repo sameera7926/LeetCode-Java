@@ -6,7 +6,8 @@ Given a string `s`, find the length of the **longest substring** that contains *
 
 ---
 
-# Important: What is a Substring?
+# Important: What is a Substring?..4
+
 
 A **substring must be continuous**.
 
