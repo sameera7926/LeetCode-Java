@@ -8,7 +8,7 @@
 
 Given an integer array `nums` and an integer `target`, find all **unique quadruplets**:
 
-```text
+```textd
 nums[a] + nums[b] + nums[c] + nums[d] = target
 ```
 
