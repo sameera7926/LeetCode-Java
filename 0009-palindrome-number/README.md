@@ -14,7 +14,7 @@ For 3Sum, we first fix one number and then use two pointers to find the other tw
 
 ## 2. When should I recognize this pattern?
 
-Think **Two Pointers** when you see:
+Think **Two Pointers** when you see:d
 
 * Sorted array
 * Pair or triplet
