@@ -4,7 +4,7 @@
 
 Given an integer array `nums` and an integer `target`, return the **indices of the two numbers** whose sum equals `target`.
 
-### Important Conditions
+### Important Conditionsl,v,
 
 * There is **exactly one valid answer**.
 * We cannot use the **same element twice**.
