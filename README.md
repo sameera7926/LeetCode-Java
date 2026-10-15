@@ -82,6 +82,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0496-next-greater-element-i](https://github.com/sameera7926/LeetCode-Java/tree/master/0496-next-greater-element-i) |
 | [0560-subarray-sum-equals-k](https://github.com/sameera7926/LeetCode-Java/tree/master/0560-subarray-sum-equals-k) |
 | [0904-fruit-into-baskets](https://github.com/sameera7926/LeetCode-Java/tree/master/0904-fruit-into-baskets) |
+| [1189-maximum-number-of-balloons](https://github.com/sameera7926/LeetCode-Java/tree/master/1189-maximum-number-of-balloons) |
 ## Sorting
 |  |
 | ------- |
@@ -102,6 +103,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0424-longest-repeating-character-replacement](https://github.com/sameera7926/LeetCode-Java/tree/master/0424-longest-repeating-character-replacement) |
 | [0438-find-all-anagrams-in-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/0438-find-all-anagrams-in-a-string) |
 | [0844-backspace-string-compare](https://github.com/sameera7926/LeetCode-Java/tree/master/0844-backspace-string-compare) |
+| [1189-maximum-number-of-balloons](https://github.com/sameera7926/LeetCode-Java/tree/master/1189-maximum-number-of-balloons) |
 | [3498-reverse-degree-of-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/3498-reverse-degree-of-a-string) |
 ## Linked List
 |  |
@@ -181,4 +183,5 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0383-ransom-note](https://github.com/sameera7926/LeetCode-Java/tree/master/0383-ransom-note) |
 | [0387-first-unique-character-in-a-string](https://github.com/sameera7926/LeetCode-Java/tree/master/0387-first-unique-character-in-a-string) |
+| [1189-maximum-number-of-balloons](https://github.com/sameera7926/LeetCode-Java/tree/master/1189-maximum-number-of-balloons) |
 <!---LeetCode Topics End-->
