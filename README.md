@@ -113,6 +113,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0021-merge-two-sorted-lists](https://github.com/sameera7926/LeetCode-Java/tree/master/0021-merge-two-sorted-lists) |
 | [0141-linked-list-cycle](https://github.com/sameera7926/LeetCode-Java/tree/master/0141-linked-list-cycle) |
 | [0142-linked-list-cycle-ii](https://github.com/sameera7926/LeetCode-Java/tree/master/0142-linked-list-cycle-ii) |
+| [0206-reverse-linked-list](https://github.com/sameera7926/LeetCode-Java/tree/master/0206-reverse-linked-list) |
 | [0876-middle-of-the-linked-list](https://github.com/sameera7926/LeetCode-Java/tree/master/0876-middle-of-the-linked-list) |
 ## Floyd's Cycle Finding Algorithm
 |  |
@@ -192,4 +193,5 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0021-merge-two-sorted-lists](https://github.com/sameera7926/LeetCode-Java/tree/master/0021-merge-two-sorted-lists) |
+| [0206-reverse-linked-list](https://github.com/sameera7926/LeetCode-Java/tree/master/0206-reverse-linked-list) |
 <!---LeetCode Topics End-->
