@@ -30,6 +30,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0977-squares-of-a-sorted-array](https://github.com/sameera7926/LeetCode-Java/tree/master/0977-squares-of-a-sorted-array) |
 | [1186-maximum-subarray-sum-with-one-deletion](https://github.com/sameera7926/LeetCode-Java/tree/master/1186-maximum-subarray-sum-with-one-deletion) |
 | [1749-maximum-absolute-sum-of-any-subarray](https://github.com/sameera7926/LeetCode-Java/tree/master/1749-maximum-absolute-sum-of-any-subarray) |
+| [2089-find-target-indices-after-sorting-array](https://github.com/sameera7926/LeetCode-Java/tree/master/2089-find-target-indices-after-sorting-array) |
 ## Two Pointers
 |  |
 | ------- |
@@ -55,6 +56,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0167-two-sum-ii-input-array-is-sorted](https://github.com/sameera7926/LeetCode-Java/tree/master/0167-two-sum-ii-input-array-is-sorted) |
 | [0209-minimum-size-subarray-sum](https://github.com/sameera7926/LeetCode-Java/tree/master/0209-minimum-size-subarray-sum) |
 | [0704-binary-search](https://github.com/sameera7926/LeetCode-Java/tree/master/0704-binary-search) |
+| [2089-find-target-indices-after-sorting-array](https://github.com/sameera7926/LeetCode-Java/tree/master/2089-find-target-indices-after-sorting-array) |
 ## Sliding Window
 |  |
 | ------- |
@@ -94,6 +96,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0018-4sum](https://github.com/sameera7926/LeetCode-Java/tree/master/0018-4sum) |
 | [0056-merge-intervals](https://github.com/sameera7926/LeetCode-Java/tree/master/0056-merge-intervals) |
 | [0977-squares-of-a-sorted-array](https://github.com/sameera7926/LeetCode-Java/tree/master/0977-squares-of-a-sorted-array) |
+| [2089-find-target-indices-after-sorting-array](https://github.com/sameera7926/LeetCode-Java/tree/master/2089-find-target-indices-after-sorting-array) |
 ## String
 |  |
 | ------- |
