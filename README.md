@@ -16,6 +16,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0056-merge-intervals](https://github.com/sameera7926/LeetCode-Java/tree/master/0056-merge-intervals) |
 | [0057-insert-interval](https://github.com/sameera7926/LeetCode-Java/tree/master/0057-insert-interval) |
 | [0152-maximum-product-subarray](https://github.com/sameera7926/LeetCode-Java/tree/master/0152-maximum-product-subarray) |
+| [0162-find-peak-element](https://github.com/sameera7926/LeetCode-Java/tree/master/0162-find-peak-element) |
 | [0167-two-sum-ii-input-array-is-sorted](https://github.com/sameera7926/LeetCode-Java/tree/master/0167-two-sum-ii-input-array-is-sorted) |
 | [0209-minimum-size-subarray-sum](https://github.com/sameera7926/LeetCode-Java/tree/master/0209-minimum-size-subarray-sum) |
 | [0496-next-greater-element-i](https://github.com/sameera7926/LeetCode-Java/tree/master/0496-next-greater-element-i) |
@@ -53,6 +54,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Binary Search
 |  |
 | ------- |
+| [0162-find-peak-element](https://github.com/sameera7926/LeetCode-Java/tree/master/0162-find-peak-element) |
 | [0167-two-sum-ii-input-array-is-sorted](https://github.com/sameera7926/LeetCode-Java/tree/master/0167-two-sum-ii-input-array-is-sorted) |
 | [0209-minimum-size-subarray-sum](https://github.com/sameera7926/LeetCode-Java/tree/master/0209-minimum-size-subarray-sum) |
 | [0704-binary-search](https://github.com/sameera7926/LeetCode-Java/tree/master/0704-binary-search) |
