@@ -16,6 +16,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0053-maximum-subarray](https://github.com/sameera7926/LeetCode-Java/tree/master/0053-maximum-subarray) |
 | [0056-merge-intervals](https://github.com/sameera7926/LeetCode-Java/tree/master/0056-merge-intervals) |
 | [0057-insert-interval](https://github.com/sameera7926/LeetCode-Java/tree/master/0057-insert-interval) |
+| [0136-single-number](https://github.com/sameera7926/LeetCode-Java/tree/master/0136-single-number) |
 | [0152-maximum-product-subarray](https://github.com/sameera7926/LeetCode-Java/tree/master/0152-maximum-product-subarray) |
 | [0153-find-minimum-in-rotated-sorted-array](https://github.com/sameera7926/LeetCode-Java/tree/master/0153-find-minimum-in-rotated-sorted-array) |
 | [0162-find-peak-element](https://github.com/sameera7926/LeetCode-Java/tree/master/0162-find-peak-element) |
@@ -213,4 +214,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0024-swap-nodes-in-pairs](https://github.com/sameera7926/LeetCode-Java/tree/master/0024-swap-nodes-in-pairs) |
 | [0025-reverse-nodes-in-k-group](https://github.com/sameera7926/LeetCode-Java/tree/master/0025-reverse-nodes-in-k-group) |
 | [0206-reverse-linked-list](https://github.com/sameera7926/LeetCode-Java/tree/master/0206-reverse-linked-list) |
+## Bit Manipulation
+|  |
+| ------- |
+| [0136-single-number](https://github.com/sameera7926/LeetCode-Java/tree/master/0136-single-number) |
 <!---LeetCode Topics End-->
