@@ -30,6 +30,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0724-find-pivot-index](https://github.com/sameera7926/LeetCode-Java/tree/master/0724-find-pivot-index) |
 | [0739-daily-temperatures](https://github.com/sameera7926/LeetCode-Java/tree/master/0739-daily-temperatures) |
 | [0852-peak-index-in-a-mountain-array](https://github.com/sameera7926/LeetCode-Java/tree/master/0852-peak-index-in-a-mountain-array) |
+| [0875-koko-eating-bananas](https://github.com/sameera7926/LeetCode-Java/tree/master/0875-koko-eating-bananas) |
 | [0904-fruit-into-baskets](https://github.com/sameera7926/LeetCode-Java/tree/master/0904-fruit-into-baskets) |
 | [0918-maximum-sum-circular-subarray](https://github.com/sameera7926/LeetCode-Java/tree/master/0918-maximum-sum-circular-subarray) |
 | [0977-squares-of-a-sorted-array](https://github.com/sameera7926/LeetCode-Java/tree/master/0977-squares-of-a-sorted-array) |
@@ -65,6 +66,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0209-minimum-size-subarray-sum](https://github.com/sameera7926/LeetCode-Java/tree/master/0209-minimum-size-subarray-sum) |
 | [0704-binary-search](https://github.com/sameera7926/LeetCode-Java/tree/master/0704-binary-search) |
 | [0852-peak-index-in-a-mountain-array](https://github.com/sameera7926/LeetCode-Java/tree/master/0852-peak-index-in-a-mountain-array) |
+| [0875-koko-eating-bananas](https://github.com/sameera7926/LeetCode-Java/tree/master/0875-koko-eating-bananas) |
 | [2089-find-target-indices-after-sorting-array](https://github.com/sameera7926/LeetCode-Java/tree/master/2089-find-target-indices-after-sorting-array) |
 ## Sliding Window
 |  |
