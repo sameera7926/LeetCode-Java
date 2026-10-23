@@ -26,9 +26,7 @@ class Solution {
                 } 
                 else {
                     result.add(Arrays.asList(
-                        nums[i],
-                        nums[left],
-                        nums[right]
+                        nums[i], nums[left], nums[right]
                     ));
 
                     left++;
